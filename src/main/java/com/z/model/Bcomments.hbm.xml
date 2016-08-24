@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="com.z.model.Bcomments" table="bcomments" schema="blogpro">
+        <id name="cid">
+            <column name="CID" sql-type="int(11)"/>
+            <generator class="native"/>
+        </id>
+        <property name="article">
+            <column name="ARTICLE" sql-type="int(11)"/>
+        </property>
+        <property name="user">
+            <column name="USER" sql-type="int(11)"/>
+        </property>
+        <property name="contents">
+            <column name="CONTENTS" sql-type="text"/>
+        </property>
+        <property name="date">
+            <column name="DATE" sql-type="datetime"/>
+        </property>
+    </class>
+</hibernate-mapping>

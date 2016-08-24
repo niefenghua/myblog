@@ -1,0 +1,22 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="com.z.model.Preference" table="preference" schema="blogpro">
+        <id name="pid">
+            <column name="PID" sql-type="int(11)"/>
+            <generator class="native"/>
+        </id>
+        <property name="user">
+            <column name="USER" sql-type="int(11)"/>
+        </property>
+        <property name="title">
+            <column name="TITLE" sql-type="varchar(255)"/>
+        </property>
+        <property name="signature">
+            <column name="SIGNATURE" sql-type="varchar(255)"/>
+        </property>
+    </class>
+</hibernate-mapping>

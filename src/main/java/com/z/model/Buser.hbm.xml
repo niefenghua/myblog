@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="com.z.model.Buser" table="buser" schema="blogpro">
+        <id name="uid">
+            <column name="UID" sql-type="int(11)"/>
+            <generator class="native"/>
+        </id>
+        <property name="name">
+            <column name="NAME" sql-type="varchar(30)" length="30"/>
+        </property>
+        <property name="password">
+            <column name="PASSWORD" sql-type="varchar(16)" length="16"/>
+        </property>
+        <property name="nickname">
+            <column name="NICKNAME" sql-type="varchar(16)" length="16"/>
+        </property>
+        <property name="securityquestion">
+            <column name="SECURITYQUESTION" sql-type="varchar(40)" length="40"/>
+        </property>
+        <property name="securityanswer">
+            <column name="SECURITYANSWER" sql-type="varchar(40)" length="40"/>
+        </property>
+    </class>
+</hibernate-mapping>
