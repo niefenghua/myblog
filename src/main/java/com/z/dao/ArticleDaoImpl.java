@@ -2,6 +2,7 @@ package com.z.dao;
 
 import com.z.common.Page;
 import com.z.model.Barticle;
+import com.z.model.Buser;
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -79,6 +80,15 @@ public class ArticleDaoImpl implements ArticleDao {
     }
 
     @Override
+    public List<Barticle> queryAllByUserName(String name) {
+        // 根据用户名查id
+        String hql = "from Buser bu where bu.name= ? ";
+        Buser buser = (Buser) getSession().createQuery(hql).setParameter(0,name).uniqueResult();
+
+        return queryAllByUser(buser.getUid());
+    }
+
+    @Override
     public List<Barticle> queryAllByUserPage(Integer uid, Page page) {
         String hql = "from Barticle ba where ba.user=?";
         Query query = getSession().createQuery(hql);
@@ -87,7 +97,16 @@ public class ArticleDaoImpl implements ArticleDao {
         query.setFirstResult(page.getBeginIndex());
 
         List<Barticle> barticles = query.list();
-        return barticles;
 
+        return barticles;
+    }
+
+    @Override
+    public List<Barticle> queryAllByUserPage(String name, Page page) {
+        // 根据用户名查id
+        String hql = "from Buser bu where bu.name= ? ";
+        Buser buser = (Buser) getSession().createQuery(hql).setParameter(0,name).uniqueResult();
+
+        return queryAllByUserPage(buser.getUid(),page);
     }
 }

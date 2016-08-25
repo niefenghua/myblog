@@ -17,11 +17,12 @@ public interface ArticleDao {
 
     List<Barticle> queryAllByPage(Page page);
 
-
     // 根据作者查找全部
     List<Barticle> queryAllByUser(Integer uid);
-
+    List<Barticle> queryAllByUserName(String name);
     List<Barticle> queryAllByUserPage(Integer uid,Page page);
+
+    List<Barticle> queryAllByUserPage(String name,Page page);
 
 
 }

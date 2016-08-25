@@ -64,15 +64,23 @@ public class ArticleServiceImpl implements ArticleService {
     public Result queryAllByUserPage(Integer uid, Page page) {
         int count = articleDao.queryAllByUser(uid).size();
         page = PageUtil.createPage(page,count);
-
         List<Barticle> barticles = articleDao.queryAllByUserPage(uid,page);
-
         Result result = new Result();
         result.setList(barticles);
         result.setPage(page);
         return result;
     }
 
+    @Override
+    public Result queryAllByUserPage(String name, Page page) {
+        int count = articleDao.queryAllByUserName(name).size();
 
+        page = PageUtil.createPage(page,count);
+        List<Barticle> barticles = articleDao.queryAllByUserPage(name,page);
 
+        Result result = new Result();
+        result.setList(barticles);
+        result.setPage(page);
+        return result;
+    }
 }

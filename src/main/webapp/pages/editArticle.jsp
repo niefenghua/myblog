@@ -10,11 +10,13 @@
 <h2>This is a JSP page.</h2>
 
 <form action="saveArticle" method="post">
-    title:<input type="text" name="title"/>
-    content:<textarea rows="40" cols="60" name="content" id="content"></textarea>
+    标题:<input type="text" name="title"/>
+
+    <textarea rows="40" cols="60" name="content" id="content"></textarea>
     <script>
         CKEDITOR.replace('content');
     </script>
+    <input type="submit" value="保存"/>
 </form>
 
 </body>

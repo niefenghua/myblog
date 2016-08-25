@@ -12,7 +12,8 @@
 <context:component-scan base-package="com.z"/>
 	<context:property-placeholder location="classpath:db.properties" />
 	
-	<!-- 配置数据源 -->
+	<!-- 配置数据源 c3p0-->
+    <!--
 	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
 		<property name="user" value="${jdbc.user}"/>
 		<property name="password" value="${jdbc.password}"/>
@@ -21,6 +22,19 @@
 		<property name="initialPoolSize" value="${jdbc.initPoolSize}"/>
 		<property name="maxPoolSize" value="${jdbc.maxPoolSize}"/>
 	</bean>
+	-->
+    <!-- 配置数据源 druid-->
+    <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource">
+        <property name="url" value="${jdbc.jdbcUrl}"/>
+        <property name="driverClassName" value="${jdbc.driverClass}"/>
+        <property name="password" value="${jdbc.password}"/>
+		<property name="username" value="${jdbc.user}"/>
+
+		<property name="initialSize" value="5"/>
+		<property name="minIdle" value="5"/>
+		<property name="maxActive" value="10"/>
+    </bean>
+
 
 	<!-- 配置Hibernate的SessionFactory实例 -->
 	<bean id="sessionFactory"
@@ -50,10 +64,19 @@
 	</aop:config>
 	
 	<!-- 业务bean -->
-
+	<bean class="com.z.action.UserAction" id="userAction">
+		<property name="userService" ref="userService"/>
+</bean>
 
 	<bean class="com.z.action.ArticleAction" id="articleAction">
 		<property name="articleService" ref="articleService"/>
+	</bean>
+	<bean class="com.z.action.ArticleActionUser" id="articleActionUser">
+		<property name="articleService" ref="articleService"/>
+	</bean>
+	<bean class="com.z.action.ArticleActionSave" id="saveArticle">
+		<property name="articleService" ref="articleService"/>
+		<property name="userService" ref="userService"/>
 	</bean>
 
 

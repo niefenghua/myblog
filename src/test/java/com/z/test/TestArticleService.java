@@ -68,12 +68,26 @@ public class TestArticleService extends AbstractJUnit4SpringContextTests {
     }
 
     @Test
-    public void TqueryAllByUserPage(){
+    public void TqueryAllByUserPage1(){
         Page page = new Page();
         page.setPageSize(3);
         page.setCurrentPage(2);
 
         Result result = articleService.queryAllByUserPage(1,page);
+        List<Barticle> all = result.getList();
+        for(Barticle art: all){
+            System.out.println(art.toString());
+        }
+    }
+    @Test
+    public void TqueryAllByUserPage2(){
+        Page page = new Page();
+        page.setPageSize(3);
+        page.setCurrentPage(2);
+
+        Result result = articleService.queryAllByUserPage("zhongxin",page);
+        System.out.println("cun "+page.getTotalCount());
+
         List<Barticle> all = result.getList();
         for(Barticle art: all){
             System.out.println(art.toString());

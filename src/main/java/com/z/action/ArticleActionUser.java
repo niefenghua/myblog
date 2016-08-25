@@ -3,13 +3,9 @@ package com.z.action;
 import com.opensymphony.xwork2.ActionContext;
 import com.z.common.Page;
 import com.z.common.Result;
-import com.z.model.Barticle;
 import com.z.service.ArticleService;
 
-import java.util.List;
-
-public class ArticleAction {
-
+public class ArticleActionUser {
     private ArticleService articleService;
 
     public void setArticleService(ArticleService articleService) {
@@ -20,16 +16,7 @@ public class ArticleAction {
         return articleService;
     }
 
-    private int aid;
-    private int currentPage;
-
-    public void setAid(int aid) {
-        this.aid = aid;
-    }
-
-    public int getAid() {
-        return aid;
-    }
+    int currentPage;
 
     public void setCurrentPage(int currentPage) {
         this.currentPage = currentPage;
@@ -39,30 +26,17 @@ public class ArticleAction {
         return currentPage;
     }
 
-    public String showAllArticle(){
+    public String showMyArticle(){
         Page page = new Page();
         page.setPageSize(3);
         page.setCurrentPage(currentPage);
-        Result result = articleService.queryAllByPage(page);
+
+        String name = (String) ActionContext.getContext().getSession().get("username");
+
+        Result result = articleService.queryAllByUserPage(name,page);
+        System.out.println(result.getList().size());
         ActionContext.getContext().put("result",result);
 
         return "success";
     }
-
-    public String showArticle(){
-        System.out.println(aid);
-        Barticle barticle = articleService.queryById(aid);
-
-        ActionContext.getContext().put("barticle",barticle);
-
-        return "success";
-    }
-
-    public String saveArticle(){
-
-
-        return "success";
-    }
-
-
 }

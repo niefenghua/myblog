@@ -22,4 +22,5 @@ public interface ArticleService {
     List<Barticle> queryAllByUser(Integer uid);
 
     Result queryAllByUserPage(Integer uid,Page page);
+    Result queryAllByUserPage(String name,Page page);
 }

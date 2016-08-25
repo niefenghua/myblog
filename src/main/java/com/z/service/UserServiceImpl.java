@@ -47,23 +47,42 @@ public class UserServiceImpl implements UserService {
                 return 1;
             }
         }
+        return 0;
+    }
 
-
-
+    @Override
+    public int login(String username,String pass) {
+        Buser user = userDao.getUserByName(username);
+        if(user!=null){
+            if(pass.equals(user.getPassword())){
+                return 1;
+            }
+        }
         return 0;
     }
 
     @Override
     public int register(Buser user) {
-
         String nname = user.getName();
         Buser nuser = userDao.getUserByName(nname);
-
         if (nuser==null){
             userDao.save(user);
             return 1;
         }
+        return 0;
+    }
 
+    @Override
+    public int register(String username, String pass) {
+        Buser nuser = userDao.getUserByName(username);
+        if (nuser==null){
+            Buser buser = new Buser();
+            buser.setName(username);
+            buser.setPassword(pass);
+            userDao.save(buser);
+
+            return 1;
+        }
         return 0;
     }
 }

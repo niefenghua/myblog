@@ -10,7 +10,8 @@ public interface UserService {
     Buser getUserByName(String username);
 
     int register(Buser user);
-
+    int register(String username,String pass);
     int login(Buser buser);
+    int login(String username,String pass);
 
 }
