@@ -70,6 +70,9 @@
 
 	<bean class="com.z.action.ArticleAction" id="articleAction">
 		<property name="articleService" ref="articleService"/>
+		<property name="ctrsService" ref="ctrsService"/>
+		<property name="commentsService" ref="commentsService"/>
+		<property name="userService" ref="userService"/>
 	</bean>
 	<bean class="com.z.action.ArticleActionUser" id="articleActionUser">
 		<property name="articleService" ref="articleService"/>

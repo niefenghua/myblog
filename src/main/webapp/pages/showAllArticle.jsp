@@ -14,6 +14,7 @@
 <a href="pages/login.jsp">登陆</a>
 <a href="pages/register.jsp">注册</a><br/>
 
+
 <s:iterator value="#result.list" id="art" status="sta">
     <a href="showArticle.action?aid=<s:property value='#art.aid'></s:property>"><s:property value="#art.title"></s:property></a>
     <br/>

@@ -10,6 +10,9 @@
 
     <package name="default" namespace="/" extends="struts-default">
 
+        <interceptors>
+            <interceptor name="beforeLogin" class="com.z.interceptors.LoginInterceptor"/>
+        </interceptors>
 
         <!--用户相关-->
         <action name="login" class="userAction" method="login">
@@ -36,6 +39,12 @@
 
         <action name="saveArticle" class="saveArticle" method="saveArticle">
             <result type="chain">showMyArticle</result>
+            <result name="input">/pages/login.jsp</result>
+            <interceptor-ref name="beforeLogin"/>
+            <interceptor-ref name="defaultStack"/>
+        </action>
+        <action name="addComments" class="articleAction" method="addComments">
+            <result type="chain">showArticle</result>
         </action>
         
         

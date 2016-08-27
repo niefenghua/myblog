@@ -7,6 +7,7 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import java.math.BigInteger;
 import java.util.List;
 
 @Repository("ctrsDao")
@@ -47,7 +48,23 @@ public class CtrsDaoImpl implements CtrsDao {
     }
 
     @Override
-    public long getCountByArticle(int aid) {
-        return  getCtrsByArticle(aid).size();
+    public int getCountByArticle(int aid) {
+        int count = 0;
+        if (getCtrsByArticle(aid)!=null){
+            count = getCtrsByArticle(aid).size();
+        }
+        return count;
     }
+    @Override
+    public int getCountByArticleSQL(int aid) {
+        // SELECT COUNT(*) FROM ctrs WHERE ARTICLE = aid
+        StringBuffer sql = new StringBuffer("SELECT COUNT(*) FROM ctrs WHERE ARTICLE =");
+        sql.append(aid);
+
+        System.out.println("sql语句 "+sql.toString());
+
+        int count = ((BigInteger)getSession().createSQLQuery(sql.toString()).list().get(0)).intValue();
+        return count;
+    }
+
 }

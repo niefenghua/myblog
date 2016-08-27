@@ -8,6 +8,7 @@
 </head>
 <body>
 
+<a href="showAllArticle.action">回到首页</a><br/>
 <a href="editArticle.jsp">写博客</a>
 
 <s:debug></s:debug>

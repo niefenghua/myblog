@@ -40,6 +40,7 @@ public class ArticleActionSave {
     public String getTitle() {
         return title;
     }
+
     public String saveArticle(){
 
         Barticle barticle = new Barticle();

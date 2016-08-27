@@ -8,5 +8,6 @@ public interface CtrsDao {
 
     void save(Ctrs ctrs);
     List<Ctrs> getCtrsByArticle(int aid);
-    long getCountByArticle(int aid);
+    int getCountByArticle(int aid);
+    int getCountByArticleSQL(int aid);
 }

@@ -37,12 +37,12 @@ public class TestUserService extends AbstractJUnit4SpringContextTests {
     }
     @Test
     public void Tregister(){
-        Buser buser = new Buser("Gary","1445");
+        Buser buser = new Buser("zhixiao","123");
         userService.register(buser);
     }
     @Test
     public void Tlogin(){
-        Buser buser = new Buser("Gary","144");
+        Buser buser = new Buser("zhixiao","123");
         int i = userService.login(buser);
         System.out.println(i);
     }

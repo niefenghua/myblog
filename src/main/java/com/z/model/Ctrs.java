@@ -5,6 +5,7 @@ import org.apache.commons.lang.builder.ToStringStyle;
 
 import java.util.Date;
 
+// 记录点击量 一个ip算一次
 public class Ctrs {
     private Integer cid;
     private int article;
